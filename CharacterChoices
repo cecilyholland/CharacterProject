@@ -1,0 +1,178 @@
+internal class CharacterClass
+{
+  public class CharacterChoices()
+  {
+    public string race;
+    public string alignment;
+    public int age;
+    public string height;
+    public int weight;
+    public int choice = Convert.ToInt32(Console.ReadLine);
+    Random rnd = new Random();
+
+    public void RaceAlign()
+    {
+        Console.WriteLine("1.Select Alignment \n2.Select Race");
+        switch (choice) //Setting switch cases
+        {
+            case 1:
+                Console.WriteLine("Choose from of the following: \n1. Lawful Good \n2. Lawful Evil \n3. Neutral Good \n4.Neutral Evil\n5.Chaotic Good\n6.Chaotic Evil");
+                choice = Convert.ToInt32(Console.ReadLine);
+                int _a1 = choice;
+                if (_a1 == 1)
+                    alignment = "Lawful Good";
+                if (_a1 == 2)
+                    alignment = "Lawful Evil";
+                if (_a1 == 3)
+                    alignment = "Neutral Good";
+                if (_a1 == 4)
+                    alignment = "Neurtral Evil";
+                if (_a1 == 5)
+                    alignment = "Chaotic Good";
+                if (_a1 == 6)
+                    alignment = "Chaotic Evil";
+                break;
+
+            case 2:
+                Console.WriteLine("Choose from of the following: \n1. Lawful Good \n2. Lawful Evil \n3. Neutral Good \n4.Neutral Evil\n5.Chaotic Good\n6.Chaotic Evil");
+                choice = Convert.ToInt32(Console.ReadLine);
+                int _a2 = choice;
+                if (_a2 == 1)
+                  //code for code altering attribute values
+                    race = "Human";
+                if (_a2 == 2)
+                  //code for altering attribute values
+                    race = "Elf";
+                if (_a2 == 3)
+                    //code for altering attribute values
+                    race = "Dwarf";
+                if (_a2 == 4)
+                    //code for altering attribute values
+                    race = "Gnome";
+                if (_a2 == 5)
+                    //code for altering attribute values
+                    race = "Halfling";
+                break;
+
+            default:
+                break;
+        }
+    }
+    public int SetAge()
+    {
+        if (race == "Human")
+            age = rnd.Next(15, 30);
+        if (race == "Elf")
+            age = rnd.Next(80, 180);
+        if (race == "Dwarf")
+            age = rnd.Next(40, 70);
+        if (race == "Gnome")
+            age = rnd.Next(30, 60);
+        if (race == "Halfling")
+            age = rnd.Next(30, 50);
+        else
+            Console.WriteLine("An invalid race has been entered");
+        return age;
+    }
+
+    public string SetHeight()
+    {
+        Character character1 = new Character();
+        int _cap = 0;
+        int _height1 = 0;
+        int _height2 = 0;
+        if (bool.Parse(character1.gender = "F"))
+            if (race == "Human")
+                _height1 = rnd.Next(4, 6);
+                if (_height1 == 6)
+                    _height2 = rnd.Next(0, 7);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Elf")
+                _height1 = rnd.Next(3, 4);
+                if (_height1 == 4)
+                    _height2 = rnd.Next(0, 4);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Dwarf")
+                _height1 = rnd.Next(3, 4);
+                if (_height1 == 4)
+                    _height2 = rnd.Next(0, 7);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Gnome")
+                _height1 = rnd.Next(2, 3);
+                if (_height1 == 3)
+                    _height2 = rnd.Next(0, 3);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Halfling")
+                _height1 = rnd.Next(2, 4);
+                if (_height1 == 4)
+                    _height2 = rnd.Next(0, 1);
+                else
+                    _height2 = rnd.Next(0, 11);
+        if (bool.Parse(character1.gender = "M"))
+            if (race == "Human")
+                _height1 = rnd.Next(4, 7);
+                if (_height1 == 7)
+                    _height2 = rnd.Next(0, 5);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Elf")
+                _height1 = rnd.Next(4, 5);
+                if (_height1 == 5)
+                    _height2 = rnd.Next(0, 6);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Dwarf")
+                _height1 = 4;
+                _height2 = rnd.Next(0, 10);
+            if (race == "Gnome")
+                _height1 = rnd.Next(2, 3);
+                if (_height1 == 3)
+                    _height2 = rnd.Next(0, 5);
+                else
+                    _height2 = rnd.Next(0, 11);
+            if (race == "Halfling")
+                _height1 = rnd.Next(3, 4);
+                if (_height1 == 4)
+                    _height2 = rnd.Next(0, 3);
+                else
+                    _height2 = rnd.Next(0, 11);
+        height = $"{_height1}'{_height2}";
+        return height;
+      }
+    public int SetWeight()
+    {
+        Character character1 = new Character();
+        if (bool.Parse(character1.gender = "F"))
+            if (race == "Human")
+                weight = rnd.Next(75, 200);
+            if (race == "Elf")
+                weight = rnd.Next(65, 100);
+            if (race == "Dwarf")
+                weight = rnd.Next(125, 180);
+            if (race == "Gnome")
+                weight = rnd.Next(35, 55);
+            if (race == "halfling")
+                weight = rnd.Next(45, 70);
+            else
+                Console.WriteLine("An invalid race has been detected");
+        if (bool.Parse(character1.gender = "M"))
+            if (race == "Human")
+                weight = rnd.Next(90, 260);
+            if (race == "Elf")
+                weight = rnd.Next(70, 130);
+            if (race == "Dwarf")
+                weight = rnd.Next(150, 230);
+            if (race == "Gnome")
+                weight = rnd.Next(40, 60);
+            if (race == "halfling")
+                weight = rnd.Next(55, 80);
+            else
+                Console.WriteLine("An invalid race has been detected");
+            Console.WriteLine("An invalid race has been entered");
+        return weight;
+    }
+  }
