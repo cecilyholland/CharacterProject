@@ -1,0 +1,103 @@
+
+//using System.Reflection.PortableExecutable;
+
+using CPSC3130_Project;
+
+namespace CPCS3130_Project
+{
+    internal class Menu
+    {
+        public static void Main (String[] args)
+        {
+            FileProcess fileProcess = new FileProcess();
+            MenuProcess menuProcess = new MenuProcess();
+            String userFile = "UserData.txt";
+            bool menu1 = true;
+            while (menu1)
+            {
+                Console.WriteLine("Welcome to Underdark Knights");
+                Console.WriteLine("1. Login ");
+                Console.WriteLine("2. Create Account ");
+                Console.WriteLine("3. Exit ");
+                Console.Write("\nEnter your choice: ");
+
+                String menu1Case = Console.ReadLine();
+                switch (menu1Case)
+                {
+                   case "1":
+                        {
+                            Console.WriteLine("Enter username: ");
+                            String userInput = Console.ReadLine();
+                            bool checkUser = menuProcess.CheckUser(userInput, fileProcess.ReadFile(userFile));
+                            if (checkUser)
+                            {
+
+                                bool checkPassword = menuProcess.CheckPassword(fileProcess.ReadFile(userFile));
+                                if (checkPassword)
+                                {
+                                    bool menu2 = true;
+                                    while (menu2)
+                                    {
+                                        Console.WriteLine($"Welcome {userInput}\n");
+                                        Console.WriteLine("1. Update account infomation: ");
+                                        Console.WriteLine("2. Create new Character: ");
+                                        Console.WriteLine("3. Display Character: ");
+                                        Console.WriteLine("4. Log out ");
+                                        Console.WriteLine("5: Exit ");
+                                        Console.Write("\nEnter your choice: ");
+                                        String menu2Case = Console.ReadLine();
+                                        switch (menu2Case)
+                                        {
+                                            case "4":
+                                                {
+                                                    menu2 = false;
+                                                    Console.WriteLine("\nLogout successful!");
+                                                    break;
+                                                }
+                                            case "5":
+                                                {
+                                                    menu1 = false;
+                                                    menu2 = false;
+                                                    Console.WriteLine("\nGoobye!");
+                                                    break;
+                                                }
+                                            default:
+                                                {
+                                                    Console.WriteLine("Please input between 1-5!\n");
+                                                    break;
+                                                }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("User not found. Goobye.");
+
+                            }
+
+                            break;
+                        }
+                    case "2":
+                        {
+                            menuProcess.CreateUser(userFile, fileProcess.ReadFile(userFile));
+                            break;
+                        }
+                    case "3":
+                        {
+                            Console.WriteLine("\nGoobye!");
+                            menu1 = false;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Please input between 1-3!\n");
+                            break;
+                        }
+                }
+            }
+            
+        }
+
+    }
+}
