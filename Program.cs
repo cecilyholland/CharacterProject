@@ -1,144 +1,69 @@
-﻿//create username, password, and email. Link info together and write to a text file.
-//Write the code for input validation for login.
-
-namespace AccountClass
+﻿namespace ClassProject
 {
-    internal class Account
+    internal class Program
     {
-        //instance variables
-        private string? _username = "";
-        private string? _password = "";
-        private string? _email = "";
-
-        StreamReader _cA = new StreamReader("Accounts");
-        StreamWriter write = new StreamWriter("Accounts");
-
-        //constructor
-        public Account()
+        static void Main(string[] args)
         {
-        }
-        //take in username with input validation 
-        public void CreateUsername()
-        {
-            
-            Console.WriteLine("Enter a username that is between 8 and 10 digits, has at least 1 number");
-            Console.WriteLine("Enter your username: ");
-            _username = Console.ReadLine();
-            if (_username.Length >= 8 && _username.Length <= 10)
+            AbilityScores generator = new AbilityScores();
+
+            Console.WriteLine("Choose a method to generate ability scores:");
+            Console.WriteLine("1. Method 1 - Sum of 3d6 (Min/Max = 3/18)");
+            Console.WriteLine("2. Method 2 - Sum of best 3 of 5d6 (Min/Max = 3/18)");
+            Console.WriteLine("3. Method 3 - Sum of best 3 of 5d6 plus 1d3 (Min/Max = 4/21)");
+
+            int method;
+            while (true)
             {
-                if (_username.Any(char.IsDigit))
+                Console.Write("Enter your choice (1, 2, 3): ");
+                method = Convert.ToInt32(Console.ReadLine());
+                if (method >= 1 && method <= 3)
                 {
-                    Console.WriteLine("Username accepted.");
-                    SetUserName(_username);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 3.");
                 }
             }
-        }
-        public void CreatePassword()
-        {
-            //take in password
-            Console.WriteLine("Enter your password: ");
-            _password = Console.ReadLine();
-        }
-        public void CreateEmail()
-        {
-            //take in email
-            Console.WriteLine("Enter your email: ");
-            _email = Console.ReadLine();
+
+            int[] abilityScores = generator.GenerateScores(method);
+
+            Console.WriteLine("Generated ability scores:");
+            foreach (int score in abilityScores)
+            {
+                Console.WriteLine(score);
+            }
+
+            // Create a character with generated ability scores
+            CharacterChoice character = CreateCharacter();
+
+            // Display character details
+            Console.WriteLine("Character Details:");
+            Console.WriteLine($"Name: {character.Name}");
+            Console.WriteLine($"Gender: {character.Gender}");
+            Console.WriteLine($"Alignment: {character.Alignment}");
+            Console.WriteLine($"Race: {character.Race}");
+            Console.WriteLine($"Age: {character.Age}");
+            Console.WriteLine($"Height: {character.Height}");
+            Console.WriteLine($"Weight: {character.Weight}");
         }
 
-        public void SetUserName(string _username)
+        static CharacterChoice CreateCharacter()
         {
-            this._username = _username;
-        }
-        //Getters
-        public string GetUsername()
-        {
-            return _username;
-        }
+            Console.Write("Enter character name: ");
+            string name = Console.ReadLine();
 
-        public string GetPassword()
-        {
-            return _password;
-        }
+            Console.Write("Enter character gender (M/F): ");
+            string gender = Console.ReadLine();
 
-        public string GetEmail()
-        {
-            return _email;
-        }
+            Console.Write("Enter character alignment: ");
+            string alignment = Console.ReadLine();
 
-        //connect username, password, and email into account info
-        public string newAccountCreation()
-        {
+            Console.Write("Enter character race: ");
+            string race = Console.ReadLine();
 
-            string accountInfo = ($"~{_username}~{_password}~{_email}~");
-            return accountInfo;
-
-        }
-        public string DisplayUser()
-        {
-            string userInfo = ($"The username you entered is: {GetUsername()}" +
-            $"\nThe password you entered is: {GetPassword()}" +
-            $"\nThe email you entered is: {GetEmail()}");
-            return userInfo;
-        }
-
-        //save user information in the Accounts txt file
-        public void WriteToFile()
-        {
-            StreamWriter newAccount = new StreamWriter("Accounts");
-            newAccount.WriteLine(newAccountCreation());
-            newAccount.Close();
-        }
-        //prints all info from txt file - just for testing
-        public string CurrentAccounts()
-        {
            
-            string currentAccounts = _cA.ReadToEnd();
-            return currentAccounts;
-        }
-
-        //login validation
-        public bool Login()
-        {
-            bool approved;
-            if (GetUsername().Equals(_cA) && GetPassword().Equals(_cA)) 
-            {
-            approved = true;
-            }
-            else
-            {
-            approved = false;
-            }
-            return approved;
-        }
-
-        public string UpdateAccount()
-        {
-            //take in users choice
-            Console.WriteLine("Would you like to change your username, password, or email? Enter 1, 2, or 3 respectivley.");
-            int change = Convert.ToInt32(Console.ReadLine());
-            switch (change) 
-            { 
-                case 1:
-                    //change username
-                    if (GetUsername().Equals(_cA)) //needs more to clarify the comparison
-                    {
-                        Console.WriteLine("What would you like the new username to be?");
-                        string? newUserName = Console.ReadLine();
-                        write.Write(newUserName);
-                        _cA.Close();
-                    }
-                    break;
-                case 2:
-                    //change password
-                    break;
-                case 3:
-                    //change email
-                    break;
-            }
-            //print new account info
-            string updatedInfo = $"{GetUsername}, {GetPassword}, and {GetEmail}";
-            return updatedInfo;
+            return new CharacterChoice(name, gender, alignment, race);
         }
     }
 }
