@@ -1,6 +1,3 @@
-﻿
-//using System.Reflection.PortableExecutable;
-
 using CPSC3130_Project;
 
 namespace CPCS3130_Project
@@ -22,10 +19,7 @@ namespace CPCS3130_Project
             //Main Menu
             while (menu1)
             {
-                Console.WriteLine("Welcome to ***-Underdark Knights-***");
-                Console.WriteLine("1. Login ");
-                Console.WriteLine("2. Create Account ");
-                Console.WriteLine("3. Exit ");
+                menuProcess.DisplayMainMenu();
                 Console.Write("\nEnter your choice: ");
 
                 String menu1Case = Console.ReadLine();
@@ -37,32 +31,73 @@ namespace CPCS3130_Project
                         {
                             Console.WriteLine("Enter username: ");
                             String userInput = Console.ReadLine();
-                            bool checkUser = menuProcess.CheckUser(userInput, fileProcess.ReadFile(userFile));
+                            bool checkUser = menuProcess.CheckUser(userInput, fileProcess.GetArrayData(userFile));
 
                             //If user found, proceed to check password
                             if (checkUser)
                             {
 
-                                bool checkPassword = menuProcess.CheckPassword(fileProcess.ReadFile(userFile));
+                                bool checkPassword = menuProcess.CheckPassword(fileProcess.GetArrayData(userFile));
 
                                 //If login success, proceed to user's menu
                                 if (checkPassword)
                                 {
+                                    //Get user infomation and store in Array
+                                    String[] userInfo = menuProcess.GetUserInfo(userInput);
+                                    String charFile = $"{userInfo[0]}_char.txt";
                                     bool menu2 = true;
 
                                     //User's Menu
                                     while (menu2)
                                     {
-                                        Console.WriteLine($"Welcome {userInput}\n");
-                                        Console.WriteLine("1. Update account infomation: ");
-                                        Console.WriteLine("2. Create new Character: ");
-                                        Console.WriteLine("3. Display Character: ");
-                                        Console.WriteLine("4. Log out ");
-                                        Console.WriteLine("5: Exit ");
+                                        Console.WriteLine($"Welcome {userInfo[0]}\n");
+                                        menuProcess.DisplayUserMenu();
                                         Console.Write("\nEnter your choice: ");
                                         String menu2Case = Console.ReadLine();
                                         switch (menu2Case)
                                         {
+
+                                            //Display-Update User infomation
+                                            case "1":
+                                                {
+                                                    
+                                                    Console.WriteLine($"\nUsername: {userInfo[0]}");
+                                                    Console.WriteLine($"Password: {userInfo[1]}");
+                                                    Console.WriteLine($"Email:    {userInfo[2]}\n");
+                                                   // Console.WriteLine($"Char File:    {charFile}\n");
+                                                    menuProcess.DisplayUserInfoMenu();
+                                                    Console.Write("\nEnter your choice: ");
+                                                    String menuUserInfo = Console.ReadLine();
+                                                    switch (menuUserInfo)
+                                                    {
+                                                        case "1":
+                                                            {
+                                                                break;
+                                                            }
+                                                        case "2":
+                                                            {
+                                                                break;
+                                                            }
+                                                        case "3":
+                                                            {
+                                                                break;
+                                                            }
+                                                    }
+
+                                                    break;
+                                                }
+
+                                            //Create Character
+                                            case "2":
+                                                {
+                                                    break;
+                                                }
+
+                                            //Display Character
+                                            case "3":
+                                                {
+                                                    break;
+                                                }
 
                                             //Logout - Return to Main Menu
                                             case "4":
@@ -89,10 +124,11 @@ namespace CPCS3130_Project
                                     }
                                 }
                             }
+
+                            //If user not found when log in, return to Main Menu
                             else
                             {
-                                Console.WriteLine("User not found. Goobye.");
-
+                                Console.WriteLine("User not found.\n");
                             }
 
                             break;
@@ -101,7 +137,7 @@ namespace CPCS3130_Project
                     //Create user process
                     case "2":
                         {
-                            menuProcess.CreateUser(userFile, fileProcess.ReadFile(userFile));
+                            menuProcess.CreateUser(userFile, fileProcess.GetArrayData(userFile));
                             break;
                         }
                     //Exit - End
