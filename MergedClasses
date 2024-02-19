@@ -1,0 +1,2566 @@
+namespace ClassProject
+{
+    public class Character()
+    {
+        public string gender;
+        public string name;
+        public void SetName()
+        {
+            Console.WriteLine("Please insert your first and last name");
+            name = Console.ReadLine();
+
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+        public void SetGender()
+        {
+            string _gender;
+            Console.WriteLine("Please enter your gender M/F");
+            _gender = Console.ReadLine();
+            if (_gender == "M")
+                this.gender = "M";
+            if (_gender == "F")
+                this.gender = "F";
+            else
+                Console.WriteLine("An invalid gender has been entered");
+            gender = this.gender;
+
+        }
+        public string GetGender()
+        {
+            return gender;
+        }
+    }
+    public class CharacterChoices()
+    {
+        public static string race;
+        public string alignment;
+        public int age;
+        public string height;
+        public int weight;
+        private int _count = 0;
+        public int choice = Convert.ToInt32(Console.ReadLine);
+        Random rnd = new Random();
+
+        public void RaceAlign()
+        {
+            while (_count != 2)
+            { 
+                Console.WriteLine("1.Select Alignment \n2.Select Race");
+                switch (choice) //Setting switch cases
+                {
+                    case 1:
+                        Console.WriteLine("Choose from of the following: \n1. Lawful Good \n2. Lawful Evil \n3. Neutral Good \n4.Neutral Evil\n5.Chaotic Good\n6.Chaotic Evil");
+                        choice = Convert.ToInt32(Console.ReadLine);
+                        int _a1 = choice;
+                        if (_a1 == 1)
+                            alignment = "Lawful Good";
+                        if (_a1 == 2)
+                            alignment = "Lawful Evil";
+                        if (_a1 == 3)
+                            alignment = "Neutral Good";
+                        if (_a1 == 4)
+                            alignment = "Neurtral Evil";
+                        if (_a1 == 5)
+                            alignment = "Chaotic Good";
+                        if (_a1 == 6)
+                            alignment = "Chaotic Evil";
+                        _count++;
+                        continue;
+
+                    case 2:
+                        Console.WriteLine("Choose from of the following: \n1. Human \n2. Elf \n3.Dwarf \n4.Gnomel \n5.Halfling");
+                        choice = Convert.ToInt32(Console.ReadLine);
+                        int _a2 = choice;
+                        if (_a2 == 1)
+                            //code for code altering attribute values
+                            race = "Human";
+                            
+                        if (_a2 == 2)
+                            //code for altering attribute values
+                            //Elf – Dex+2, Int+2, Con-2
+                            race = "Elf";
+                        if (_a2 == 3)
+                            //code for altering attribute values
+                            //Dwarf – Str + 2, Con + 2, Cha - 2
+                            race = "Dwarf";
+                        if (_a2 == 4)
+                            //code for altering attribute values
+                            //Gnome – Dex + 2, Con + 2, Str - 2
+                            race = "Gnome";
+                        if (_a2 == 5)
+                            //code for altering attribute values
+                            //Halfling – Dex+2, Wis+2, Str-2
+                            race = "Halfling";
+                            
+                        _count++;
+                        break;
+                }
+            }
+        }
+        public void SetAge()
+        {
+            if (race == "Human")
+                age = rnd.Next(15, 30);
+            if (race == "Elf")
+                age = rnd.Next(80, 180);
+            if (race == "Dwarf")
+                age = rnd.Next(40, 70);
+            if (race == "Gnome")
+                age = rnd.Next(30, 60);
+            if (race == "Halfling")
+                age = rnd.Next(30, 50);
+            else
+                Console.WriteLine("An invalid race has been entered");
+        }
+        public int GetAge()
+        {
+            return age;
+        }
+        public void SetHeight()
+        {
+            Character character1 = new Character();
+            int _cap = 0;
+            int _height1 = 0;
+            int _height2 = 0;
+            if (bool.Parse(character1.gender = "F"))
+                if (race == "Human")
+                    _height1 = rnd.Next(4, 6);
+                    if (_height1 == 6)
+                    _height2 = rnd.Next(0, 7);
+                    else
+                    _height2 = rnd.Next(0, 11);
+                     height = $"{_height1}'{_height2}";
+                if (race == "Elf")
+                    _height1 = rnd.Next(3, 4);
+                    if (_height1 == 4)
+                        _height2 = rnd.Next(0, 4);
+                    else
+                        _height2 = rnd.Next(0, 11);
+                    height = $"{_height1}'{_height2}";
+                if (race == "Dwarf")
+                    _height1 = rnd.Next(3, 4);
+                    if (_height1 == 4)
+                        _height2 = rnd.Next(0, 7);
+                    else
+                        _height2 = rnd.Next(0, 11);
+                     height = $"{_height1}'{_height2}";
+                if (race == "Gnome")
+                    _height1 = rnd.Next(2, 3);
+                    if (_height1 == 3)
+                        _height2 = rnd.Next(0, 3);
+                    else
+                    _height2 = rnd.Next(0, 11);
+                if (race == "Halfling")
+                    _height1 = rnd.Next(2, 4);
+                    if (_height1 == 4)
+                        _height2 = rnd.Next(0, 1);
+                    else
+                        _height2 = rnd.Next(0, 11);
+                    height = $"{_height1}'{_height2}";
+
+            if (bool.Parse(character1.gender = "M"))
+                if (race == "Human")
+                    _height1 = rnd.Next(4, 7);
+                    if (_height1 == 7)
+                        _height2 = rnd.Next(0, 5);
+                    else
+                        _height2 = rnd.Next(0, 11);
+                    height = $"{_height1}'{_height2}";
+                if (race == "Elf")
+                    _height1 = rnd.Next(4, 5);
+                    if (_height1 == 5)
+                        _height2 = rnd.Next(0, 6);
+                    else
+                        _height2 = rnd.Next(0, 11);
+                    height = $"{_height1}'{_height2}";
+                if (race == "Dwarf")
+                    _height1 = 4;
+                    _height2 = rnd.Next(0, 10);
+                    height = $"{_height1}'{_height2}";
+                if (race == "Gnome")
+                    _height1 = rnd.Next(2, 3);
+                    if (_height1 == 3)
+                        _height2 = rnd.Next(0, 5);
+                         else
+                        _height2 = rnd.Next(0, 11);
+                    height = $"{_height1}'{_height2}";
+                if (race == "Halfling")
+                    _height1 = rnd.Next(3, 4);
+                        if (_height1 == 4)
+                            _height2 = rnd.Next(0, 3);
+                        else
+                            _height2 = rnd.Next(0, 11);
+                height = $"{_height1}'{_height2}";
+        }
+
+        public string GetHeight()
+        {
+            return height;
+        }
+
+        public void SetWeight()
+        {
+            Character character1 = new Character();
+            if (bool.Parse(character1.gender = "F"))
+                if (race == "Human")
+                    weight = rnd.Next(75, 200);
+            if (race == "Elf")
+                weight = rnd.Next(65, 100);
+            if (race == "Dwarf")
+                weight = rnd.Next(125, 180);
+            if (race == "Gnome")
+                weight = rnd.Next(35, 55);
+            if (race == "halfling")
+                weight = rnd.Next(45, 70);
+            else
+                Console.WriteLine("An invalid race has been detected");
+            if (bool.Parse(character1.gender = "M"))
+                if (race == "Human")
+                    weight = rnd.Next(90, 260);
+            if (race == "Elf")
+                weight = rnd.Next(70, 130);
+            if (race == "Dwarf")
+                weight = rnd.Next(150, 230);
+            if (race == "Gnome")
+                weight = rnd.Next(40, 60);
+            if (race == "halfling")
+                weight = rnd.Next(55, 80);
+            else
+                Console.WriteLine("An invalid race has been detected");
+            Console.WriteLine("An invalid race has been entered");
+        }
+
+        public int GetWeight()
+        {
+            return weight;
+        }
+
+    }
+
+
+
+    public class AbilityScores
+    {
+        private Random random;
+        Dictionary<string, int> score_card = new Dictionary<string, int>();
+        Dictionary<string, int> ability_card = new Dictionary<string, int>();
+        int _t1;
+        int _t2;
+        int _t3;
+        int _t4;
+        int _t5;
+        int _t6;
+        public AbilityScores()
+        {
+            random = new Random();
+        }
+        public void DisplayScores()
+        {
+            foreach (var item in score_card)
+            {
+                Console.WriteLine("Key " + item.Key + " Value " + item.Value);
+            }
+        }
+
+        public void DisplayAbilities()
+        {
+            foreach (var item in ability_card)
+            {
+                Console.WriteLine("Key " + item.Key + " Value " + item.Value);
+            }
+        }
+
+        public void GenerateScores()
+        {
+            int method;
+            int _choice;
+            int _att;
+            int _count;
+            string _race = CharacterChoices.race;
+            Console.WriteLine("Please select a method to generate ability scores");
+            Console.WriteLine("1. Method 1 \n2. Method 2 \nMethod 3");
+            method = Convert.ToInt32(Console.ReadLine());
+
+            switch (method)
+            {
+                case 1:
+                    GenerateMethod1();
+                    DisplayScores();
+                    _count = 0;
+                    while (_count < 7)
+                    {
+                        Console.WriteLine("Which attribute would you like to modify? \n1. Strength \n2. Dexterity \n3. Constitution \n4.Intelligence \n5.Wisdom \n6.Charisma");
+                        _choice = Convert.ToInt32(Console.ReadLine());
+                        if (_choice == 1)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to strength");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value - 2);
+                                    score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value - 2);
+                                    score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value + 2);
+                                    score_card.Remove("Score1");
+                                if (_race == "Elf" )
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value);
+                                    score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value);
+                                    score_card.Remove("Score1");
+
+                            _count++;
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value - 2);
+                                    score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value - 2);
+                                    score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value + 2);
+                                    score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value);
+                                    score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value);
+                                    score_card.Remove("Score2");
+                                    _count++;
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value - 2);
+                                    score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value - 2);
+                                    score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value + 2);
+                                    score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value);
+                                    score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value);
+                                    score_card.Remove("Score3");
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                            if (_att == 5)
+
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+
+                            _count++;
+                            continue;
+                        }
+                        if (_choice == 2)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Dexterity");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                    _count++;
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+                                
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 3)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Constitution");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value -+ 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value );
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                            _count++;
+                            continue;
+                        }
+                        if (_choice == 4)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Intelligence");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 5)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Wisdom");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 6)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Charisma");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                                continue;
+                        }
+                    }
+
+                    break;
+                case 2:
+                    GenerateMethod2();
+                    DisplayScores();
+                    _count = 0;
+                    while (_count < 7)
+                    {
+                        Console.WriteLine("Which attribute would you like to modify? \n1. Strength \n2. Dexterity \n3. Constitution \n4.Intelligence \n5.Wisdom \n6.Charisma");
+                        _choice = Convert.ToInt32(Console.ReadLine());
+                        if (_choice == 1)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to strength");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+
+                            _count++;
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_att == 5)
+
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+
+                            _count++;
+                            continue;
+                        }
+                        if (_choice == 2)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Dexterity");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                        continue;
+                        }
+                        if (_choice == 3)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Constitution");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value - +2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 4)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Intelligence");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 5)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Wisdom");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                                continue;
+                        }
+                        if (_choice == 6)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Charisma");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                                continue;
+                        }
+                        break;
+                    }
+                    break;
+                case 3:
+                    GenerateMethod3();
+                    DisplayScores();
+                    _count = 0;
+                    while (_count < 7)
+                    {
+                        Console.WriteLine("Which attribute would you like to modify? \n1. Strength \n2. Dexterity \n3. Constitution \n4.Intelligence \n5.Wisdom \n6.Charisma");
+                        _choice = Convert.ToInt32(Console.ReadLine());
+                        if (_choice == 1)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to strength");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+
+                            _count++;
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                            _count++;
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Strength: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+
+                            _count++;
+                            continue;
+                        }
+                        if (_choice == 2)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Dexterity");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Dexterity: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 3)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Constitution");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constitution: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value - +2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Constituion: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        if (_choice == 4)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Intelligence");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Intelligence: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                                continue;
+                        }
+                        if (_choice == 5)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Wisdom");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value + 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value + 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value + 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Wisdom: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                                continue;
+                        }
+                        if (_choice == 6)
+                        {
+                            DisplayScores();
+                            Console.WriteLine("Select which score you would like to apply to Charisma");
+                            _att = Convert.ToInt32(Console.ReadLine());
+                            if (_att == 1)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value + 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value - 2);
+                                score_card.Remove("Score1");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(0).Value);
+                                score_card.Remove("Score1");
+                                _count++;
+
+                            if (_att == 2)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value + 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value - 2);
+                                score_card.Remove("Score2");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(1).Value);
+                                score_card.Remove("Score2");
+                                _count++;
+
+                            if (_att == 3)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value + 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value - 2);
+                                score_card.Remove("Score3");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(2).Value);
+                                score_card.Remove("Score3");
+                                _count++;
+
+                            if (_att == 4)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value - 2);
+                                score_card.Remove("Score4");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(3).Value);
+                                score_card.Remove("Score4");
+                                _count++;
+
+                            if (_att == 5)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value - 2);
+                                score_card.Remove("Score5");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(4).Value);
+                                score_card.Remove("Score5");
+                                _count++;
+
+                            if (_att == 6)
+                                if (_race == "Halfling")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Gnome")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Dwarf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value - 2);
+                                score_card.Remove("Score6");
+                                if (_race == "Elf")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                if (_race == "Human")
+                                    ability_card.Add("Charisma: ", score_card.ElementAt(5).Value);
+                                score_card.Remove("Score6");
+                                _count++;
+                            continue;
+                        }
+                        break;
+
+                    }
+                    break;
+            }
+            DisplayAbilities();
+        }
+
+
+        public void GenerateMethod1()
+        {
+            int[] scores1 = new int[2];
+            _t1 = scores1[0] + scores1[1] + scores1[2];
+            for (int i = 0; i < 3; i++)
+            {
+                scores1[i] = random.Next(1, 6); // Min/Max = 3/18
+            }
+
+            int[] scores2 = new int[2];
+            _t2 = scores2[0] + scores2[1] + scores2[2];
+            for (int i = 0; i < 3; i++)
+            {
+                scores2[i] = random.Next(1, 6); // Min/Max = 3/18
+            }
+
+            int[] scores3 = new int[2];
+            _t3 = scores3[0] + scores3[1] + scores3[2];
+            for (int i = 0; i < 3; i++)
+            {
+                scores3[i] = random.Next(1, 6); // Min/Max = 3/18
+            }
+
+            int[] scores4 = new int[2];
+            _t4 = scores4[0] + scores4[1] + scores4[2];
+            for (int i = 0; i < 3; i++)
+            {
+                scores4[i] = random.Next(1, 6); // Min/Max = 3/18
+            }
+
+            int[] scores5 = new int[2];
+            _t5 = scores5[0] + scores5[1] + scores5[2];
+            for (int i = 0; i < 3; i++)
+            {
+                scores5[i] = random.Next(1, 6); // Min/Max = 3/18
+            }
+
+            int[] scores6 = new int[2];
+            _t6 = scores6[0] + scores1[1] + scores1[2];
+            for (int i = 0; i < 3; i++)
+            {
+                scores6[i] = random.Next(1, 6); // Min/Max = 3/18
+            }
+
+            int _runs = 0;
+            while (_runs > 1)
+            {
+                score_card.Add("Score1", _t1); // Min/Max = 3/18
+                score_card.Add("Score2", _t2);
+                score_card.Add("Score3", _t3);
+                score_card.Add("Score4", _t4);
+                score_card.Add("Score5", _t5);
+                score_card.Add("Score6", _t6);
+                _runs = _runs + 1;
+            }
+        }
+
+        void GenerateMethod2()
+        {
+            int[] scores1 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores1[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores1);
+            int _combinedscores1 = scores1[0] + scores1[1] + scores1[2];
+            _t1 = _combinedscores1; //
+
+            int[] scores2 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores2[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores2);
+            int _combinedscores2 = scores2[0] + scores2[1] + scores2[2];
+            _t2 = _combinedscores2; //
+
+            int[] scores3 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores3[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores3);
+            int _combinedscores3 = scores3[0] + scores3[1] + scores3[2];
+            _t3 = _combinedscores3; //
+
+            int[] scores4 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores4[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores4);
+            int _combinedscores4 = scores4[0] + scores4[1] + scores4[2];
+            _t4 = _combinedscores4; //
+
+            int[] scores5 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores5[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores1);
+            int _combinedscores5 = scores5[0] + scores5[1] + scores5[2];
+            _t5 = _combinedscores5; //
+
+            int[] scores6 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores6[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores6);
+            int _combinedscores6 = scores6[0] + scores6[1] + scores6[2];
+            _t6 = _combinedscores6; //
+
+
+
+            int _runs = 0;
+            while (_runs > 1)
+            {
+                score_card.Add("Score1", _t1); // Min/Max = 3/18
+                score_card.Add("Score2", _t2);
+                score_card.Add("Score3", _t3);
+                score_card.Add("Score4", _t4);
+                score_card.Add("Score5", _t5);
+                score_card.Add("Score6", _t6);
+                _runs = _runs + 1;
+            }
+        }
+
+        void GenerateMethod3()
+        {
+            int[] scores1 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores1[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores1);
+            int _combinedscores1 = scores1[0] + scores1[1] + scores1[2] + random.Next(1, 3);
+            int _finalscore1 = random.Next(1, 6);
+            _t1 = _combinedscores1; //
+
+            int[] scores2 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores2[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores2);
+            int _combinedscores2 = scores2[0] + scores2[1] + scores2[2] + random.Next(1, 3);
+            _t2 = _combinedscores2; //
+
+            int[] scores3 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores3[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores3);
+            int _combinedscores3 = scores3[0] + scores3[1] + scores3[2] + random.Next(1, 3);
+            _t3 = _combinedscores3; //
+
+            int[] scores4 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores4[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores4);
+            int _combinedscores4 = scores4[0] + scores4[1] + scores4[2] + random.Next(1, 3);
+            _t4 = _combinedscores4; //
+
+            int[] scores5 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores5[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores1);
+            int _combinedscores5 = scores5[0] + scores5[1] + scores5[2] + random.Next(1, 3);
+            _t5 = _combinedscores5; //
+
+            int[] scores6 = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                scores6[i] = random.Next(1, 6); // Min/Max = 5/21
+            }
+            Array.Sort(scores6);
+            int _combinedscores6 = scores6[0] + scores6[1] + scores6[2] + random.Next(1, 3);
+            _t6 = _combinedscores6; //
+
+
+
+            int _runs = 0;
+            while (_runs > 1)
+            {
+                score_card.Add("Score1", _t1); // Min/Max = 3/18
+                score_card.Add("Score2", _t2);
+                score_card.Add("Score3", _t3);
+                score_card.Add("Score4", _t4);
+                score_card.Add("Score5", _t5);
+                score_card.Add("Score6", _t6);
+                _runs = _runs + 1;
+            }
+        }
+    }
+}
