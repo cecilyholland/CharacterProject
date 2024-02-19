@@ -14,9 +14,9 @@ namespace CPCS3130_Project
 
             //Set the filename to save the user infomation.
             String userFile = "UserData.txt";
-            bool menu1 = true;
 
             //Main Menu
+            bool menu1 = true;
             while (menu1)
             {
                 menuProcess.DisplayMainMenu();
@@ -44,13 +44,13 @@ namespace CPCS3130_Project
                                 {
                                     //Get user infomation and store in Array
                                     String[] userInfo = menuProcess.GetUserInfo(userInput);
-                                    String charFile = $"{userInfo[0]}_char.txt";
+                                    String charFile = $"{userInfo[0]}_Character.txt";
                                     bool menu2 = true;
 
                                     //User's Menu
                                     while (menu2)
                                     {
-                                        Console.WriteLine($"Welcome {userInfo[0]}\n");
+                                        Console.WriteLine($"Welcome *** {userInfo[0]} ***\n");
                                         menuProcess.DisplayUserMenu();
                                         Console.Write("\nEnter your choice: ");
                                         String menu2Case = Console.ReadLine();
@@ -68,6 +68,7 @@ namespace CPCS3130_Project
                                                     menuProcess.DisplayUserInfoMenu();
                                                     Console.Write("\nEnter your choice: ");
                                                     String menuUserInfo = Console.ReadLine();
+                                                   
                                                     switch (menuUserInfo)
                                                     {
                                                         case "1":
@@ -86,16 +87,45 @@ namespace CPCS3130_Project
 
                                                     break;
                                                 }
+                                            //End User's info Menu
 
                                             //Create Character
                                             case "2":
                                                 {
+
+                                                    //Check if user already had character. Create character deny
+                                                    bool checkFile = File.Exists(charFile);
+                                                    if (checkFile)
+                                                    {
+                                                        Console.WriteLine("You already have a character.");
+                                                        Console.WriteLine("Choose 3 to Display your character infomation.\n");
+                                                    }
+                                                    else
+                                                    {
+
+                                                        //Call CreateCharacter method from MenuProcess
+                                                        menuProcess.CreateCharacter(charFile);
+                                                    }
                                                     break;
                                                 }
 
                                             //Display Character
                                             case "3":
                                                 {
+
+                                                    //Check if user have not created character yet. Ask to create one.
+                                                    bool checkFile = File.Exists(charFile);
+                                                    if (!checkFile)
+                                                    {
+                                                        Console.WriteLine("You have not created character yet.");
+                                                        Console.WriteLine("Please choose 2 to create your character!\n");
+                                                    }
+                                                    else
+                                                    {
+
+                                                        //Call DisplayCharacter method from MenuProcess
+                                                        menuProcess.DisplayCharacter(charFile);
+                                                    }                                                
                                                     break;
                                                 }
 
@@ -107,7 +137,7 @@ namespace CPCS3130_Project
                                                     break;
                                                 }
 
-                                            //Exit - End
+                                            //Exit - End Program
                                             case "5":
                                                 {
                                                     menu1 = false;
@@ -115,6 +145,8 @@ namespace CPCS3130_Project
                                                     Console.WriteLine("\nGoodbye!");
                                                     break;
                                                 }
+
+                                            //If user input wrong.
                                             default:
                                                 {
                                                     Console.WriteLine("Please input between 1-5!\n");
@@ -133,6 +165,7 @@ namespace CPCS3130_Project
 
                             break;
                         }
+                    //End of Login process.
 
                     //Create user process
                     case "2":
@@ -140,13 +173,15 @@ namespace CPCS3130_Project
                             menuProcess.CreateUser(userFile, fileProcess.GetArrayData(userFile));
                             break;
                         }
-                    //Exit - End
+
+                    //Exit - End Program
                     case "3":
                         {
                             Console.WriteLine("\nGoobye!");
                             menu1 = false;
                             break;
                         }
+
                     //If choose the wrong option - Return to main menu.
                     default:
                         {
