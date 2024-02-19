@@ -66,7 +66,5 @@ namespace CPSC3130_Project
             }
             write.Close();
         }
-
-
     }
 }
