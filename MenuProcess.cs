@@ -154,7 +154,47 @@ namespace CPSC3130_Project
                 }
 			}			
 			return userInfo;
+        }
 
+		//Method Create Character - Create CharacterCreate instance object.
+		public void CreateCharacter(String fileName)
+        {
+			List<String[]> charData = new List<string[]> { };
+		
+            CharacterCreate character = new CharacterCreate();
+			
+			character.SetName();
+			character.SetGender();
+
+			//Add data to Array and write to a file under "{username}_Character" name
+			charData.Add(character.GetName());
+			charData.Add(character.GetGender());
+			_fileProcess.WriteFile(charData, fileName);
+		}
+
+		//Method to Display Character infomation.
+		public void DisplayCharacter(String fileName)
+		{
+
+				//Read Character file and store in charInfo array
+                List<String[]> charInfo = _fileProcess.GetCharData(fileName);
+
+				//Display array
+                for (int i = 0; i < charInfo.Count; i++)
+				{
+					for (int j = 0; j < charInfo[i].Length; j++)
+					{
+						if (j == charInfo[i].Length - 1)
+						{
+							Console.Write($"{charInfo[i][j]}\n");
+						}
+						else
+						{
+							Console.Write($"{charInfo[i][j]}:\t ");
+						}
+					}
+				}	
+			Console.WriteLine();
         }
     }
 }
