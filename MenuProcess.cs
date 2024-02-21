@@ -3,8 +3,9 @@ using CPCS3130_Project;
 namespace CPSC3130_Project
 {
 	//This class for the Menus process
-	//Provide Display all Menus
-	//Provide Check User, Check Password, Create User, Get User Infomation.
+	//Provides Display all Menus
+	//Provides Check User, Check Password, Create User, Get User Infomation.
+	//Provides Create Character, Display Character Infomation
 	public class MenuProcess
 	{
 		int _userID = 0;		//user ID - the arrayID of user in array
@@ -14,7 +15,7 @@ namespace CPSC3130_Project
 		{
 		}
 
-		//Get UserName (not used yet)
+		//Get UserName
 		public String getUserName()
 		{
 			return _userName;
@@ -47,8 +48,8 @@ namespace CPSC3130_Project
             Console.WriteLine("3. Exit:\n ");
         }
 
-		//Method check user. Return true if user is found.
-		public bool CheckUser(String userInput, List<String[]> arrayData)
+        //Method check user. Return true if user is found.
+        public bool CheckUser(String userInput, List<String[]> arrayData)
 		{
 			bool userCheck = false;
 			for (int i = 0; i < arrayData.Count; i++)
@@ -70,7 +71,7 @@ namespace CPSC3130_Project
 			bool passwordCheck = false;
 			for (int count =4; count > -1; count --)
 			{
-                Console.WriteLine("Passwords: ");
+                Console.Write("Passwords: ");
                 String passwordInput = Console.ReadLine();
                 if (passwordInput.Equals(arrayData[this._userID][1]))
 				{
@@ -155,21 +156,25 @@ namespace CPSC3130_Project
 			}			
 			return userInfo;
         }
-
-		//Method Create Character - Create CharacterCreate instance object.
-		public void CreateCharacter(String fileName)
+     
+        //Method Create Character - Create CharacterCreate instance object.
+        public void CreateCharacter(String fileName)
         {
 			List<String[]> charData = new List<string[]> { };
-		
-            CharacterCreate character = new CharacterCreate();
-			
-			character.SetName();
-			character.SetGender();
 
-			//Add data to Array and write to a file under "{username}_Character" name
-			charData.Add(character.GetName());
-			charData.Add(character.GetGender());
-			_fileProcess.WriteFile(charData, fileName);
+		
+            Character character = new Character();
+
+            //Add data to Array and write to a file under "{username}_Character" name
+            character.DisplayCharacter();
+            charData.Add(character.GetName());
+            charData.Add(character.GetGender());
+            charData.Add(character.GetAlignment());
+            charData.Add(character.GetRace());
+            charData.Add(character.GetAge());
+            charData.Add(character.GetWeight());
+            charData.Add(character.GetHeight());
+            _fileProcess.WriteFile(charData, fileName);
 		}
 
 		//Method to Display Character infomation.
@@ -178,7 +183,7 @@ namespace CPSC3130_Project
 
 				//Read Character file and store in charInfo array
                 List<String[]> charInfo = _fileProcess.GetCharData(fileName);
-
+            Console.WriteLine("\n    *** Character Infomation ***");
 				//Display array
                 for (int i = 0; i < charInfo.Count; i++)
 				{
@@ -186,11 +191,11 @@ namespace CPSC3130_Project
 					{
 						if (j == charInfo[i].Length - 1)
 						{
-							Console.Write($"{charInfo[i][j]}\n");
+							Console.Write($":\t{charInfo[i][j]}\n");
 						}
 						else
 						{
-							Console.Write($"{charInfo[i][j]}:\t ");
+							Console.Write($"{charInfo[i][j]}     \t ");
 						}
 					}
 				}	
