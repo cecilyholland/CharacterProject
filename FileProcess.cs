@@ -57,14 +57,14 @@ namespace CPSC3130_Project
 
         //Method Write the List of String Data parameter to FileName parameter
         //Not use yet.
-        public void WriteFile(List<String> arrayData, String fileName)
+        public void WriteFile(Dictionary<String,int> dictionaryData, String fileName)
         {
-            StreamWriter write = new StreamWriter(fileName, append: true);
-            for (int i = 0; i < arrayData.Count; i++)
+            StreamWriter writer = new StreamWriter(fileName);
+            for (int j = 0; j < dictionaryData.Count; j++)
             {
-                write.WriteLine(arrayData[i]);
+                writer.WriteLine($"{dictionaryData.ElementAt(j).Key},{dictionaryData.ElementAt(j).Value}");
             }
-            write.Close();
+            writer.Close();
         }
     }
 }
