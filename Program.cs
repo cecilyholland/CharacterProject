@@ -14,7 +14,8 @@ namespace CPCS3130_Project
 
             //Set the filename to save the user infomation.
             String userFile = "UserData.txt";
-
+            String charFile = "";
+            String charAttFile = "";
             //Main Menu
             bool menu1 = true;
             while (menu1)
@@ -29,7 +30,7 @@ namespace CPCS3130_Project
                     //Login process
                     case "1":
                         {
-                            Console.WriteLine("Enter username: ");
+                            Console.Write("Enter username: ");
                             String userInput = Console.ReadLine();
                             bool checkUser = menuProcess.CheckUser(userInput, fileProcess.GetArrayData(userFile));
 
@@ -44,7 +45,8 @@ namespace CPCS3130_Project
                                 {
                                     //Get user infomation and store in Array
                                     String[] userInfo = menuProcess.GetUserInfo(userInput);
-                                    String charFile = $"{userInfo[0]}_Character.txt";
+                                    charFile = $"{userInfo[0]}_Character.txt";
+                                    charAttFile = $"{charFile}Att.txt";
                                     bool menu2 = true;
 
                                     //User's Menu
@@ -102,9 +104,9 @@ namespace CPCS3130_Project
                                                     }
                                                     else
                                                     {
-
-                                                        //Call CreateCharacter method from MenuProcess
+                                                        //Call CreateCharacter method from MenuProcess                                                        
                                                         menuProcess.CreateCharacter(charFile);
+                                                       
                                                     }
                                                     break;
                                                 }
